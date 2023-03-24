@@ -56,7 +56,7 @@ const Projects = () => {
         <div className="slider_box">
           {data.map(el => {
 
-            return <a key={el.id} className='slider_box_item' href={el.link}>
+            return <a key={el.id} className='slider_box_item' target='_blank' href={el.link}>
               <img src={el.image} alt="" className="slider_box_item_img" />
               <h4 className="slider_box_item_caption">{el.title}</h4>
             </a>
