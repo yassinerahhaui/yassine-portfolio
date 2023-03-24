@@ -1,0 +1,23 @@
+@import './functions';
+// grid  	540px 	720px 	960px 	1140px 	1320px
+$sm: rem(540);
+$md: rem(720);
+$lg: rem(960);
+$xl: rem(1140);
+$xxl: rem(1320);
+
+// colors
+// $accent: #AB47BC;
+$accent: #EE1D51;
+$dark: #131418;
+$light: #ECF0F1;
+$primary: #410093;
+$success: #09B83E;
+$bg-1: #F57D00;
+$warning: #f5f249;
+// $warning: #FFFC00;
+
+// fonts
+$Poppins: 'Poppins', sans-serif;
+
+

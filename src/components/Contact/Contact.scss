@@ -1,0 +1,102 @@
+@import '../../scss/variables';
+
+.contact-me {
+  // background-color: $primary;
+  // margin: rem(20) rem(10);
+  // border-radius: rem(20);
+  // color: $light;
+  background-color: $warning;
+
+  &_title {
+    @include title2();
+
+  }
+  &_form {
+    width: 700px;
+    max-width: 90%;
+    margin-inline: auto;
+    label {
+      @include form_label($dark);
+    }
+    .name-mail {
+      display: grid;
+      grid-template-columns: repeat(2,49.5%);
+      gap: 1%;
+      @media(max-width: $sm) {
+        grid-template-columns: 100%;
+      }
+    }
+    input, textarea {
+      @include form_input();
+    }
+    // button {
+    //   width: 100%;
+    //   color: $light;
+    //   background-color: $success;
+    //   padding: 10px;
+    //   border: 2px solid $primary;
+    //   border-radius: 4px;
+    //   margin-top: 10px;
+    //   margin-bottom: 10px;
+    //   cursor: pointer;
+    //   font: {
+    //     size: 18px;
+    //     weight: 600;
+    //   }
+    //   @media(max-width: $sm) {
+    //     font-size: rem((12));
+    //   }
+    //   &:hover {
+    //     background-color: #328332;
+    //   }
+    // }
+    button {
+      margin-bottom: rem(10);
+    }
+  }
+}
+.msg {
+  display: none;
+  &_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000c4;
+  }
+  &_box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 0 .4rem black,0 0 .4rem black;
+    border-radius: 20px;
+    background-color: #ffffff;
+    padding: 20px 10px;
+    &_close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #212121;
+      cursor: pointer;
+      font-size: 20px;
+      &:hover {
+        color: red;
+      }
+    }
+    &_success {
+      margin-top: 10px;
+      text-align: center;
+      font: {
+        size: 15px;
+        weight: 600;
+      }
+      color: #212121;
+    }
+
+  }
+  
+}

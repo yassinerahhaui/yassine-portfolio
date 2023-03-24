@@ -1,0 +1,111 @@
+@import '../../scss/variables';
+.nav {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $primary;
+  color: white;
+  padding-inline: 20px;
+  box-shadow: 0 0 rem(4) $primary, 0 0 rem(4) $primary;
+  &_start {
+    display: flex;
+    align-items: center;
+    .menu {
+      color: $light;
+      @media(min-width: $sm) {
+        display: none;
+      }
+    }
+  }
+  &_end {
+    @media(min-width: $sm) {
+      display: flex;
+    }
+    display: none;
+    align-items: center;
+    list-style: none;
+    li {
+      padding-inline: 5px;
+      a {
+        color: white;
+        text-decoration: none;
+        font: {
+          size: 14px;
+          weight: 800;
+        }
+        &::after {
+          content: '';
+          display: block;
+          border: 2px solid transparent;
+          border-radius: 10px;
+          width: 0%;
+          transition: width .3s ease-in-out;
+        }
+        &:hover {
+          &::after {
+            border-color: #fe0036;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+.logo {
+  width: 100px;
+}
+.nav-bg {
+  background-color: #000000cc;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+.navlist {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  bottom: 0;
+  width: 250px;
+  background-color: $light;
+  display: none;
+  z-index: 1000;
+  overflow: hidden;
+  transition: left .3s ease-in-out;
+  ul {
+    list-style: none;
+    a {
+      color: $dark;
+      text-decoration: none;
+      display: block;
+      font: {
+        size: rem(14);
+        weight: 800;
+      }
+      &::after {
+        content: '';
+        display: block;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        width: 0%;
+        transition: width .5s ease-in-out;
+      }
+      &:hover {
+        color: $light;
+        background-color: $primary;
+        &::after {
+          border-color: #fe0036;
+          width: 100%;
+        }
+      }
+    }
+    li {
+      padding: rem(8) rem(20);
+    }
+  }
+}

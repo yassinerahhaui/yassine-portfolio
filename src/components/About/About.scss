@@ -1,0 +1,33 @@
+@import '../../scss/variables';
+
+.about {
+  // box-shadow: 0 0 rem(2) $primary,0 0 rem(2) $primary;
+  // color: $light;
+  // background-color: $primary;
+  // border-radius: rem(20);
+  // margin: rem(30) rem(10);
+  background-color: $accent;
+  padding: rem(20);
+  &_title {
+    @include title2();
+    // border-bottom: rem(2) solid $light;
+  }
+  &_paragraph {
+    font: {
+      size: rem(14);
+      weight: 500;
+    }
+    color: $light;
+    text-shadow: rem(2) rem(2) $dark;
+    margin-inline: auto;
+    max-width: rem(600);
+    padding: rem(30);
+    text-align: center;
+    line-height: 1.5;
+    @media(max-width: $sm) {
+      font-size: rem(12);
+      text-align: justify;
+      padding: rem(20);
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@function rem($value) {
+  $remValue: calc($value / 16)+rem;
+  @return $remValue;
+}
+
+@mixin title2() {
+  text-align: center;
+  padding: rem(20);
+  text-shadow: rem(1) rem(1) rem(1) $light;
+}
+
+@mixin form_label($color) {
+  color: $color;
+
+  font: {
+    weight: 600;
+    size: 15px;
+  }
+
+  @media(max-width: $sm) {
+    font-size: rem((12));
+  }
+}
+
+@mixin form_input() {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border: 2px solid $primary;
+  resize: vertical;
+
+  font: {
+    weight: 600;
+    size: 15px;
+  }
+
+  @media(max-width: $sm) {
+    font-size: rem((12));
+  }
+
+  &::placeholder {
+    font: {
+      weight: 600;
+      size: 15px;
+    }
+
+    @media(max-width: $sm) {
+      font-size: rem((12));
+    }
+  }
+
+  transition: border-radius .3s ease-in-out;
+
+  &:focus {
+    border-radius: rem(10);
+  }
+}

@@ -1,0 +1,119 @@
+@import '../../scss/variables';
+
+@mixin footer-list() {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+
+  font: {
+    size: rem(14);
+    weight: 600;
+  }
+}
+
+.footer {
+  background-color: $primary;
+  color: $light;
+  display: grid;
+  padding-inline: rem(20);
+  grid-template-columns: repeat(4, 1fr);
+
+  &_logo {
+    width: 100%;
+    text-align: center;
+    grid-column: 1 / 5;
+    img {
+      width: rem(150);
+      @media(max-width: $sm) {
+        width: rem(100);
+      }
+    }
+  }
+
+  &_start {
+    @media(max-width: $sm) {
+      grid-column: 1 / 2;
+    }
+    ul {
+      li {
+        @include footer-list();
+        padding: rem(5);
+        @media(max-width: $sm) {
+          font-size: rem(11);
+          padding: rem(2);
+        }
+        a {
+          color: $light;
+          text-decoration: none;
+          &:hover {
+            color: $warning;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  &_middle {
+    @media(max-width: $sm) {
+      grid-column: 2 / 5;
+    }
+    ul {
+      li {
+        @include footer-list();
+        padding: rem(5);
+        white-space: nowrap;
+        @media(max-width: $sm) {
+          font-size: rem(11);
+          padding: rem(2);
+        }
+      }
+    }
+  }
+
+  &_end {
+    @media(max-width: $sm) {
+      grid-column: 1 / 5;
+    }
+    label {
+      @include form_label($light);
+    }
+
+    input {
+      @include form_input();
+      border: rem(2) solid $light;
+    }
+  }
+
+  &_social-media {
+    grid-column: 1 / 5;
+    text-align: center;
+    margin: rem(20) 0;
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+
+      a {
+        color: $light;
+        margin: rem(30) rem(10);
+
+        svg {
+          font-size: rem(40);
+        }
+
+        background-color: #00000096;
+        border-radius: rem(20);
+
+        &:hover {
+          svg {
+            margin-top: rem(10);
+          }
+
+          color: $warning;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import '../../scss/variables';
+@mixin arrowBtn($left: none,$right: none) {
+  position: absolute;
+  top: 50%;
+  left: $left;
+  right: $right;
+  transform: translateY(-50%);
+  font-size: rem(50);
+  cursor: pointer;
+  color: #3a3a3abe;
+  text-shadow: 0 0 rem(4) $dark, 0 0 rem(4) $dark;
+  &:hover {
+    color: #050505;
+    text-shadow: 0 0 rem(4) $dark, 0 0 rem(4) $dark;
+  }
+}
+.projects {
+  background-color: $warning;
+  // color: $light;
+  &_title {
+    @include title2();
+  }
+  .slider {
+    width: 100%;
+    overflow-x: hidden;
+    padding: rem(10) 0;
+    position: relative;
+    &_box {
+      width: max-content;
+      position: relative;
+      left: 0;
+      transition: left 300ms ease-in-out;
+      &_item {
+        float: left;
+        margin-inline: 10px;
+        width: 500px;
+        border-radius: rem(20);
+        overflow: hidden;
+        box-shadow: 0 0 rem(4) $dark,0 0 rem(4) $dark;
+        border: rem(4) solid $primary;
+        background-color: $accent;
+        text-decoration: none;
+        @media(max-width: $sm) {
+          width: rem(300);
+        }
+        &_img {
+          width: 100%;
+        }
+        &_caption {
+          padding: rem(20);
+          text-align: center;
+          background-color: $primary;
+          color: $light;
+        }
+      }
+    }
+    .left-btn {
+      @include arrowBtn(rem(5));
+    }
+    .right-btn {
+      @include arrowBtn(none,rem(5));
+    }
+  }
+}
