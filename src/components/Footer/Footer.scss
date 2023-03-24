@@ -22,8 +22,10 @@
     width: 100%;
     text-align: center;
     grid-column: 1 / 5;
+
     img {
       width: rem(150);
+
       @media(max-width: $sm) {
         width: rem(100);
       }
@@ -31,20 +33,26 @@
   }
 
   &_start {
+    grid-column: 1 / 2.5;
+
     @media(max-width: $sm) {
       grid-column: 1 / 2;
     }
+
     ul {
       li {
         @include footer-list();
         padding: rem(5);
+
         @media(max-width: $sm) {
           font-size: rem(11);
           padding: rem(2);
         }
+
         a {
           color: $light;
           text-decoration: none;
+
           &:hover {
             color: $warning;
             text-decoration: underline;
@@ -55,14 +63,18 @@
   }
 
   &_middle {
+    grid-column: 2.5 / 4;
+
     @media(max-width: $sm) {
       grid-column: 2 / 5;
     }
+
     ul {
       li {
         @include footer-list();
         padding: rem(5);
         white-space: nowrap;
+
         @media(max-width: $sm) {
           font-size: rem(11);
           padding: rem(2);
@@ -72,9 +84,12 @@
   }
 
   &_end {
+    grid-column: 4 / 5;
+
     @media(max-width: $sm) {
       grid-column: 1 / 5;
     }
+
     label {
       @include form_label($light);
     }
@@ -98,9 +113,11 @@
       a {
         color: $light;
         margin: rem(30) rem(10);
+        transition: color .3s ease-in-out;
 
         svg {
           font-size: rem(40);
+          transition: margin-top .3s ease-in-out;
         }
 
         background-color: #00000096;
@@ -108,7 +125,8 @@
 
         &:hover {
           svg {
-            margin-top: rem(10);
+            margin-top: rem(-10);
+            filter: drop-shadow(0 0 rem(4) $dark);
           }
 
           color: $warning;
