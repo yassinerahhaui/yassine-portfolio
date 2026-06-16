@@ -1,7 +1,7 @@
 @import '../../scss/variables';
 
 .contact-me {
-  background: linear-gradient(135deg, #D081D0 0%, #B366C9 100%);
+  background: linear-gradient(135deg, $light 0%, rgba($primary, 0.08) 100%);
   padding: rem(60) rem(40);
 
   &_title {
@@ -103,7 +103,7 @@
 
     .submit-btn {
       padding: rem(14) rem(32) !important;
-      background: linear-gradient(135deg, $primary, #7B1FA2) !important;
+      background: linear-gradient(135deg, $primary, $accent) !important;
       color: white !important;
       font-weight: 700 !important;
       border-radius: rem(8) !important;
@@ -210,7 +210,7 @@
 
   &-success {
     .msg_icon {
-      color: #4caf50;
+      color: $success;
     }
   }
 

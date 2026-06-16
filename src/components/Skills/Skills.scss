@@ -1,7 +1,7 @@
 @import '../../scss/variables';
 
 .skills {
-  background: linear-gradient(135deg, #D081D0 0%, #B366C9 100%);
+  background: linear-gradient(135deg, $light 0%, rgba($primary, 0.08) 100%);
   padding: rem(60) rem(40);
   max-width: 100%;
   overflow: hidden;
@@ -42,7 +42,7 @@
 }
 
 .skills_box {
-  background: linear-gradient(135deg, $primary 0%, #5E35B1 100%);
+  background: linear-gradient(135deg, $primary 0%, #0052cc 100%);
   color: $light;
   width: 100%;
   padding: rem(28);
@@ -95,7 +95,7 @@
 
       &_per {
         height: 100%;
-        background: linear-gradient(90deg, $light 0%, #FFE0FF 100%);
+        background: linear-gradient(90deg, $light 0%, rgba($accent, 0.7) 100%);
         border-radius: rem(10);
         box-shadow: 0 0 rem(4) rgba($light, 0.4);
       }
@@ -106,7 +106,7 @@
       text-align: right;
       font-size: rem(13);
       font-weight: 700;
-      color: #FFE0FF;
+      color: $light;
     }
   }
 
