@@ -5,7 +5,7 @@ header {
   align-items: center;
   justify-content: space-between;
   min-height: rem(600);
-  background: linear-gradient(135deg, $warning 0%, #c2a5d4 100%);
+  background: linear-gradient(135deg, $light 0%, rgba($primary, 0.12) 100%);
   border-bottom: none;
   padding: rem(60) rem(40);
   gap: rem(60);
@@ -24,7 +24,7 @@ header {
         letter-spacing: -0.5px;
 
         .highlight {
-          background: linear-gradient(135deg, #AB47BC, #7B1FA2);
+          background: linear-gradient(135deg, $primary, $accent);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -49,7 +49,7 @@ header {
       .cta-button {
         display: inline-block;
         padding: rem(14) rem(32);
-        background: linear-gradient(135deg, $primary, #7B1FA2);
+        background: linear-gradient(135deg, $primary, $accent);
         color: white;
         text-decoration: none;
         border-radius: rem(8);

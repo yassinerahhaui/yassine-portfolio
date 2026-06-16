@@ -1,7 +1,7 @@
 @import '../../scss/variables';
 
 .projects {
-  background: linear-gradient(135deg, #D081D0 0%, #B366C9 100%);
+  background: linear-gradient(135deg, $light 0%, rgba($primary, 0.08) 100%);
   padding: rem(60) rem(40);
 
   &_title {
@@ -53,7 +53,7 @@
 
       &_caption {
         padding: rem(20);
-        background: linear-gradient(135deg, $primary, #5E35B1);
+        background: linear-gradient(135deg, $primary, #0052cc);
         color: $light;
         font-size: rem(16);
         font-weight: 700;
