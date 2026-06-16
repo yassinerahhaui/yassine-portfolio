@@ -45,7 +45,7 @@ const Projects = () => {
     const maxScroll = getMaxScroll();
     let newPosition = scrollPosition;
 
-    if (direction === 'right') {
+    if (direction === 'left') {
       newPosition = Math.max(0, scrollPosition - itemWidth);
     } else {
       newPosition = Math.min(maxScroll, scrollPosition + itemWidth);
@@ -85,7 +85,7 @@ const Projects = () => {
 
         <button 
           className='slider_btn left-btn' 
-          onClick={() => handleScroll('right')}
+          onClick={() => handleScroll('left')}
           aria-label="Previous project"
           title="Previous project"
         >
@@ -94,7 +94,7 @@ const Projects = () => {
 
         <button 
           className='slider_btn right-btn' 
-          onClick={() => handleScroll('left')}
+          onClick={() => handleScroll('right')}
           aria-label="Next project"
           title="Next project"
         >
