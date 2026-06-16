@@ -1,33 +1,39 @@
 @import '../../scss/variables';
 
 .about {
-  // box-shadow: 0 0 rem(2) $primary,0 0 rem(2) $primary;
-  // color: $light;
-  // background-color: $primary;
-  // border-radius: rem(20);
-  // margin: rem(30) rem(10);
-  background-color: $accent;
-  padding: rem(20);
+  background: linear-gradient(135deg, $warning 0%, #E0B0E8 100%);
+  padding: rem(60) rem(40);
+
   &_title {
-    @include title2();
-    // border-bottom: rem(2) solid $light;
+    @include title2;
+    color: $primary;
+    margin-bottom: rem(40);
   }
+
   &_paragraph {
-    font: {
-      size: rem(14);
-      weight: 500;
-    }
-    color: $light;
-    text-shadow: rem(2) rem(2) $dark;
-    margin-inline: auto;
-    max-width: rem(600);
-    padding: rem(30);
+    font-size: rem(16);
+    font-weight: 400;
+    color: $dark;
+    max-width: rem(700);
+    margin: 0 auto;
+    padding: rem(32) rem(24);
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: rem(12);
+    box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.08);
+
+    @media(max-width: $md) {
+      font-size: rem(15);
+      padding: rem(24) rem(16);
+    }
+
     @media(max-width: $sm) {
-      font-size: rem(12);
-      text-align: justify;
-      padding: rem(20);
+      font-size: rem(14);
+      text-align: left;
+      padding: rem(16);
+      line-height: 1.6;
     }
   }
 }

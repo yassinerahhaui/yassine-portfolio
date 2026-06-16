@@ -1,57 +1,155 @@
 @import '../../scss/variables';
+
 header {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  height: rem(500);
-  background-color: $warning;
-  border-bottom: rem(4) dashed $primary;
+  justify-content: space-between;
+  min-height: rem(600);
+  background: linear-gradient(135deg, $warning 0%, #c2a5d4 100%);
+  border-bottom: none;
+  padding: rem(60) rem(40);
+  gap: rem(60);
+
   .header_text {
-    text-shadow: 0 0 rem(2) $dark,0 0 rem(2) $dark;
-    h1 {
-      font-size: rem(50);
-      color: $primary;
-    }
-    p {
-      font-size: rem(25);
-      color: $dark;
-    }
-  }
-  img {
-    width: rem(400);
-    height: rem(400);
-    border-radius: rem(50);
-    filter: drop-shadow(0 0 rem(5) $primary);
-    // background-image: linear-gradient(to right, $primary, $primary);
-    background-image: url('/bg-1.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    border: rem(14) solid $light;
-  }
-  @media(max-width: $sm) {
-    display: block;
-    text-align: center;
-    width: 100%;
-    overflow: hidden;
-    height: rem(450);
-    img {
-      width: rem(300);
-      max-width: 100%;
-      height: rem(300);
-      border-radius: 50%;
-      margin-top: rem(20);
-    }
-    .header_text {
-      max-width: 100%;
+    flex: 1;
+    min-width: 0;
+
+    .header_text_content {
       h1 {
-        font-size: rem(30);
-        white-space: nowrap;
-        margin-bottom: rem(10);
+        font-size: rem(60);
+        color: $primary;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: rem(12);
+        letter-spacing: -0.5px;
+
+        .highlight {
+          background: linear-gradient(135deg, #AB47BC, #7B1FA2);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
       }
-      p {
+
+      .subtitle {
+        font-size: rem(28);
+        color: $dark;
+        font-weight: 600;
+        margin-bottom: rem(8);
+      }
+
+      .description {
+        font-size: rem(18);
+        color: rgba($dark, 0.8);
+        margin-bottom: rem(32);
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: rem(14) rem(32);
+        background: linear-gradient(135deg, $primary, #7B1FA2);
+        color: white;
+        text-decoration: none;
+        border-radius: rem(8);
+        font-weight: 600;
+        font-size: rem(16);
+        transition: all 0.3s ease;
+        box-shadow: 0 rem(4) rem(12) rgba($primary, 0.3);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 rem(6) rem(16) rgba($primary, 0.4);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .header_image_container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+
+    .image {
+      width: rem(380);
+      height: rem(380);
+      border-radius: 50%;
+      filter: drop-shadow(0 rem(8) rem(20) rgba($primary, 0.3));
+      border: rem(6) solid white;
+      object-fit: cover;
+      transition: transform 0.3s ease, filter 0.3s ease;
+
+      &:hover {
+        transform: translateY(-8px);
+        filter: drop-shadow(0 rem(12) rem(28) rgba($primary, 0.4));
+      }
+    }
+  }
+
+  @media(max-width: $md) {
+    flex-direction: column;
+    padding: rem(40) rem(24);
+    min-height: auto;
+    gap: rem(40);
+
+    .header_text .header_text_content {
+      h1 {
+        font-size: rem(44);
+      }
+
+      .subtitle {
         font-size: rem(20);
       }
+
+      .description {
+        font-size: rem(16);
+      }
+    }
+
+    .header_image_container .image {
+      width: rem(300);
+      height: rem(300);
     }
   }
-  padding: 20px;
+
+  @media(max-width: $sm) {
+    padding: rem(32) rem(16);
+    min-height: auto;
+    gap: rem(24);
+
+    .header_text {
+      text-align: center;
+
+      .header_text_content {
+        h1 {
+          font-size: rem(32);
+        }
+
+        .subtitle {
+          font-size: rem(18);
+        }
+
+        .description {
+          font-size: rem(14);
+        }
+
+        .cta-button {
+          padding: rem(12) rem(24);
+          font-size: rem(14);
+        }
+      }
+    }
+
+    .header_image_container .image {
+      width: rem(240);
+      height: rem(240);
+    }
+  }
 }

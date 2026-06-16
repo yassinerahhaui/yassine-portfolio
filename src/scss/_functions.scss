@@ -5,54 +5,55 @@
 
 @mixin title2() {
   text-align: center;
-  padding: rem(20);
-  text-shadow: rem(1) rem(1) rem(1) $light;
+  padding: rem(20) 0;
+  font-size: rem(36);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 @mixin form_label($color) {
   color: $color;
-
-  font: {
-    weight: 600;
-    size: 15px;
-  }
+  font-weight: 600;
+  font-size: rem(14);
+  display: block;
+  margin-bottom: rem(8);
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
 
   @media(max-width: $sm) {
-    font-size: rem((12));
+    font-size: rem(12);
   }
 }
 
 @mixin form_input() {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 4px;
-  border: 2px solid $primary;
-  resize: vertical;
+  padding: rem(12) rem(14);
+  margin-bottom: rem(12);
+  border-radius: rem(6);
+  border: rem(2) solid #e0e0e0;
+  font-size: rem(14);
+  font-weight: 500;
+  font-family: 'Roboto Slab', serif;
+  transition: all 0.3s ease;
 
-  font: {
-    weight: 600;
-    size: 15px;
-  }
-
-  @media(max-width: $sm) {
-    font-size: rem((12));
+  &:focus {
+    outline: none;
+    border-color: #410093;
+    box-shadow: 0 0 0 3px rgba(65, 0, 147, 0.1);
   }
 
   &::placeholder {
-    font: {
-      weight: 600;
-      size: 15px;
-    }
+    font-weight: 400;
+    font-size: rem(14);
+    color: rgba(0, 0, 0, 0.5);
 
     @media(max-width: $sm) {
-      font-size: rem((12));
+      font-size: rem(12);
     }
   }
 
-  transition: border-radius .3s ease-in-out;
-
-  &:focus {
-    border-radius: rem(10);
+  @media(max-width: $sm) {
+    font-size: rem(14);
   }
 }
