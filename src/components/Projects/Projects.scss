@@ -1,64 +1,160 @@
 @import '../../scss/variables';
-@mixin arrowBtn($left: none,$right: none) {
-  position: absolute;
-  top: 50%;
-  left: $left;
-  right: $right;
-  transform: translateY(-50%);
-  font-size: rem(50);
-  cursor: pointer;
-  color: #3a3a3abe;
-  text-shadow: 0 0 rem(4) $dark, 0 0 rem(4) $dark;
-  &:hover {
-    color: #050505;
-    text-shadow: 0 0 rem(4) $dark, 0 0 rem(4) $dark;
-  }
-}
+
 .projects {
-  background-color: $warning;
-  // color: $light;
+  background: linear-gradient(135deg, #D081D0 0%, #B366C9 100%);
+  padding: rem(60) rem(40);
+
   &_title {
-    @include title2();
+    @include title2;
+    color: $primary;
+    margin-bottom: rem(40);
   }
+
   .slider {
     width: 100%;
-    overflow-x: hidden;
-    padding: rem(10) 0;
+    overflow: hidden;
     position: relative;
+    padding: rem(20) rem(60);
+
     &_box {
+      display: flex;
+      gap: rem(20);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       width: max-content;
-      position: relative;
-      left: 0;
-      transition: left 300ms ease-in-out;
-      &_item {
-        float: left;
-        margin-inline: 10px;
-        width: 500px;
-        border-radius: rem(20);
-        overflow: hidden;
-        box-shadow: 0 0 rem(4) $dark,0 0 rem(4) $dark;
-        border: rem(4) solid $primary;
-        background-color: $accent;
-        text-decoration: none;
-        @media(max-width: $sm) {
-          width: rem(300);
+    }
+
+    &_item {
+      flex-shrink: 0;
+      width: rem(500);
+      border-radius: rem(16);
+      overflow: hidden;
+      background-color: white;
+      text-decoration: none;
+      box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 rem(12) rem(24) rgba(0, 0, 0, 0.2);
+
+        .slider_box_item_img {
+          transform: scale(1.05);
         }
+      }
+
+      &_img {
+        width: 100%;
+        height: rem(280);
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      &_caption {
+        padding: rem(20);
+        background: linear-gradient(135deg, $primary, #5E35B1);
+        color: $light;
+        font-size: rem(16);
+        font-weight: 700;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @media(max-width: $sm) {
+        width: rem(280);
+
         &_img {
-          width: 100%;
+          height: rem(160);
         }
+
         &_caption {
-          padding: rem(20);
-          text-align: center;
-          background-color: $primary;
-          color: $light;
+          padding: rem(12);
+          font-size: rem(14);
         }
       }
     }
-    .left-btn {
-      @include arrowBtn(rem(5));
-    }
-    .right-btn {
-      @include arrowBtn(none,rem(5));
+
+    .slider_btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba($primary, 0.85);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: rem(48);
+      height: rem(48);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+
+      &:hover {
+        background: $primary;
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      &:active {
+        transform: translateY(-50%) scale(0.95);
+      }
+
+      &.left-btn {
+        left: rem(10);
+      }
+
+      &.right-btn {
+        right: rem(10);
+      }
+
+      @media(max-width: $md) {
+        width: rem(40);
+        height: rem(40);
+
+        &.left-btn {
+          left: 0;
+        }
+
+        &.right-btn {
+          right: 0;
+        }
+      }
+
+      @media(max-width: $sm) {
+        width: rem(36);
+        height: rem(36);
+      }
     }
   }
+
+  @media(max-width: $md) {
+    padding: rem(40) rem(20);
+
+    .slider {
+      padding: rem(16) rem(50);
+    }
+  }
+
+  @media(max-width: $sm) {
+    padding: rem(32) rem(16);
+
+    .slider {
+      padding: rem(12) rem(44);
+    }
+  }
+}
+
+@mixin title2 {
+  font-size: rem(36);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: rem(20) 0;
 }

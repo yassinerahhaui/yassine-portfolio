@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './Projects.scss'
 import { motion, useAnimation, useInView } from 'framer-motion'
 import { data } from '../../data/projects'
@@ -9,43 +9,54 @@ const animation = {
   start: { opacity: 0 },
   anime: { opacity: 1, transition: { duration: 2 } }
 }
+
 const Projects = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const sliderRef = useRef(null);
   const controls = useAnimation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
-  let position = 0
-  const left = () => {
-    const box = document.querySelector('.slider_box')
-    const itemWidth = document.querySelectorAll('.slider_box_item')[0].scrollWidth + 20
-    let maxwidth = ((itemWidth * 19) - window.innerWidth)
-    if (position >= -itemWidth) {
-      position = -maxwidth
-      box.style.right = `${position}px`
-    } else {
-      position += itemWidth
-      box.style.left = `${position}px`
-    }
-  }
-  const right = () => {
-    const box = document.querySelector('.slider_box')
-    const itemWidth = document.querySelectorAll('.slider_box_item')[0].scrollWidth + 20
-    let maxwidth = ((itemWidth * 19) - window.innerWidth)
-    if (position <= -maxwidth) {
-      position = 0
-      box.style.left = `${position}px`
-    } else {
-      position -= itemWidth
-      box.style.left = `${position}px`
-    }
-  }
+
   useEffect(() => {
     if (isInView) {
       controls.start("anime")
     }
   }, [controls, isInView])
+
+  const getItemWidth = () => {
+    if (sliderRef.current?.firstChild) {
+      return sliderRef.current.firstChild.scrollWidth + 20;
+    }
+    return 520;
+  };
+
+  const getMaxScroll = () => {
+    if (sliderRef.current) {
+      const itemWidth = getItemWidth();
+      const totalWidth = itemWidth * data.length;
+      const containerWidth = window.innerWidth;
+      return Math.max(0, totalWidth - containerWidth + 100);
+    }
+    return 0;
+  };
+
+  const handleScroll = (direction) => {
+    const itemWidth = getItemWidth();
+    const maxScroll = getMaxScroll();
+    let newPosition = scrollPosition;
+
+    if (direction === 'right') {
+      newPosition = Math.max(0, scrollPosition - itemWidth);
+    } else {
+      newPosition = Math.min(maxScroll, scrollPosition + itemWidth);
+    }
+
+    setScrollPosition(newPosition);
+  };
+
   return (
     <div className='projects' id='projects'>
-      <h2 className='projects_title'>My Best Project</h2>
+      <h2 className='projects_title'>My Best Projects</h2>
       <motion.div
         className="slider"
         ref={ref}
@@ -53,23 +64,42 @@ const Projects = () => {
         animate={controls}
         variants={animation}
       >
-        <div className="slider_box">
-          {data.map(el => {
-
-            return <a key={el.id} className='slider_box_item' target='_blank' href={el.link}>
-              <img src={el.image} alt="" className="slider_box_item_img" />
+        <div 
+          className="slider_box"
+          ref={sliderRef}
+          style={{ transform: `translateX(-${scrollPosition}px)` }}
+        >
+          {data.map(el => (
+            <a 
+              key={el.id} 
+              className='slider_box_item' 
+              target='_blank' 
+              rel="noopener noreferrer"
+              href={el.link}
+            >
+              <img src={el.image} alt={el.title} className="slider_box_item_img" />
               <h4 className="slider_box_item_caption">{el.title}</h4>
             </a>
-          })}
+          ))}
         </div>
-        <KeyboardArrowLeftIcon
-          className='left-btn' 
-          onClick={()=> left()}
-        />
-        <KeyboardArrowRightIcon 
-          className='right-btn' 
-          onClick={()=> right()}
-        />
+
+        <button 
+          className='slider_btn left-btn' 
+          onClick={() => handleScroll('right')}
+          aria-label="Previous project"
+          title="Previous project"
+        >
+          <KeyboardArrowLeftIcon />
+        </button>
+
+        <button 
+          className='slider_btn right-btn' 
+          onClick={() => handleScroll('left')}
+          aria-label="Next project"
+          title="Next project"
+        >
+          <KeyboardArrowRightIcon />
+        </button>
       </motion.div>
     </div>
   )

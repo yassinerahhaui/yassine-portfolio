@@ -1,78 +1,135 @@
 @import '../../scss/variables';
 
+.skills {
+  background: linear-gradient(135deg, #D081D0 0%, #B366C9 100%);
+  padding: rem(60) rem(40);
+  max-width: 100%;
+  overflow: hidden;
+
+  &_title {
+    @include title2;
+    color: $primary;
+    margin-bottom: rem(40);
+  }
+}
+
 .skills_box_items {
   display: grid;
-  padding: rem(10);
-  @media(max-width: $sm){
-    grid-template-columns: 100%;
-    gap: rem(10);
+  gap: rem(24);
+
+  @media(max-width: $sm) {
+    grid-template-columns: 1fr;
   }
+
   @media(min-width: $sm) {
-    grid-template-columns: repeat(2,1fr);
-    gap: rem(10);
+    grid-template-columns: repeat(2, 1fr);
+
     .other {
       grid-column: 1 / 3;
+      max-width: 50%;
+      margin: 0 auto;
     }
   }
+
   @media(min-width: $md) {
-    grid-template-columns: repeat(3,1fr);
-    gap: rem(10);
+    grid-template-columns: repeat(3, 1fr);
+
     .other {
       grid-column: 3 / 4;
+      max-width: 100%;
     }
   }
 }
-.skills {
-  background-color: $accent;
-  // color: $light;
-  max-width: 100%;
-  overflow: hidden;
-  &_title {
-    @include title2;
+
+.skills_box {
+  background: linear-gradient(135deg, $primary 0%, #5E35B1 100%);
+  color: $light;
+  width: 100%;
+  padding: rem(28);
+  border-radius: rem(16);
+  box-shadow: 0 rem(4) rem(12) rgba($primary, 0.25);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 rem(8) rem(24) rgba($primary, 0.35);
   }
-  &_box {
-    background-color: $primary;
-    color: $light; 
-    width: 100%;
-    padding: rem(20);
-    border-radius: rem(20);
-    box-shadow: 0 0 rem(4) $primary;
-    &_title {
-      text-align: center;
-      padding-bottom: rem(20);
+
+  &_title {
+    text-align: center;
+    font-size: rem(20);
+    font-weight: 700;
+    margin-bottom: rem(24);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: rem(18);
+    gap: rem(12);
+
+    &:last-child {
+      margin-bottom: 0;
     }
-    &_item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: rem(20);
-      &_name {
-        font: {
-          size: rem(14);
-          weight: 600;
-        }
-        width: rem(100);
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      &_num-box {
-        width: 100%;
-        height: rem(12);
-        border: rem(2) solid $light;
+
+    &_name {
+      font-size: rem(14);
+      font-weight: 600;
+      width: rem(100);
+      min-width: rem(100);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &_num-box {
+      flex: 1;
+      height: rem(8);
+      background-color: rgba($light, 0.2);
+      border-radius: rem(10);
+      overflow: hidden;
+      position: relative;
+
+      &_per {
+        height: 100%;
+        background: linear-gradient(90deg, $light 0%, #FFE0FF 100%);
         border-radius: rem(10);
-        &_per {
-          height: 100%;
-          background-color: $light;
-          border-radius: rem(10);
-        }
+        box-shadow: 0 0 rem(4) rgba($light, 0.4);
       }
+    }
+
+    &_num-per {
+      min-width: rem(50);
+      text-align: right;
+      font-size: rem(13);
+      font-weight: 700;
+      color: #FFE0FF;
+    }
+  }
+
+  @media(max-width: $sm) {
+    padding: rem(20);
+
+    &_title {
+      font-size: rem(16);
+      margin-bottom: rem(16);
+    }
+
+    &_item {
+      margin-bottom: rem(12);
+
+      &_name {
+        width: rem(80);
+        min-width: rem(80);
+        font-size: rem(12);
+      }
+
       &_num-per {
-        width: 50px;
-        text-align: center;
-        font: {
-          size: rem(14);
-          weight: 600;
-        }
+        min-width: rem(40);
+        font-size: rem(11);
       }
     }
   }

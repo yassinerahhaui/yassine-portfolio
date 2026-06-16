@@ -1,70 +1,36 @@
-import React,{ useEffect } from 'react'
+import React, { useEffect } from 'react'
 import './Header.scss'
 import { motion } from 'framer-motion'
 
 const Header = () => {
-  const updateDimensions = () => {
-    const image = document.querySelector('.image')
-    const paragraph = document.querySelector('.header_text')
-    const header = document.querySelector('.header')
-    if (window.innerWidth <= 540) {
-      header.textContent = ''
-      header.appendChild(image)
-      header.appendChild(paragraph)
-    } else {
-      header.textContent = ''
-      header.appendChild(paragraph)
-      header.appendChild(image)
-    }
-    
-    
-  }
-  useEffect(()=> {
-    window.addEventListener("resize", updateDimensions)
-  },[])
   return (
     <header className='header' id="header">
-      {window.innerWidth <= 540? 
-        <><motion.img
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="header_text"
+      >
+        <div className="header_text_content">
+          <h1>Hi, I'm <span className="highlight">Yassine</span></h1>
+          <p className="subtitle">Full Stack Developer</p>
+          <p className="description">Building beautiful and functional web experiences</p>
+          <a href="#contact" className="cta-button">Get in Touch</a>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="header_image_container"
+      >
+        <img
           src="/yassine.png"
-          alt="yassine image"
-          aria-label='yassine image'
-          initial={{ x: '200%' }}
-          animate={{ x: 0 }}
-          transition={{ delay: .5, duration: 2, type: 'spring', stiffness: 80, damping: 9 }}
+          alt="Yassine - Full Stack Developer"
           className='image'
         />
-        <motion.div
-        initial={{ x: '-200%' }}
-        animate={{ x: 0 }}
-        transition={{ delay: .5, duration: 2, type: 'spring', stiffness: 80, damping: 9 }}
-        className="header_text"
-        >
-        <h1>Hi, I'm yassine</h1>
-        <p>I'm a fullstack developper</p>
-        </motion.div>
-        </>
-      :
-        <><motion.div
-          initial={{ x: '-200%' }}
-          animate={{ x: 0 }}
-          transition={{ delay: .5, duration: 2, type: 'spring', stiffness: 80, damping: 9 }}
-          className="header_text"
-        >
-          <h1>Hi, I'm yassine</h1>
-          <p>I'm a fullstack developper</p>
-        </motion.div>
-        <motion.img
-          src="/yassine.png"
-          alt="yassine image"
-          aria-label='yassine image'
-          initial={{ x: '200%' }}
-          animate={{ x: 0 }}
-          transition={{ delay: .5, duration: 2, type: 'spring', stiffness: 80, damping: 9 }}
-          className='image'
-        /></>
-      }
-      
+      </motion.div>
     </header>
   )
 }

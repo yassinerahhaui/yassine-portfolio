@@ -1,102 +1,230 @@
 @import '../../scss/variables';
 
 .contact-me {
-  // background-color: $primary;
-  // margin: rem(20) rem(10);
-  // border-radius: rem(20);
-  // color: $light;
-  background-color: $warning;
+  background: linear-gradient(135deg, #D081D0 0%, #B366C9 100%);
+  padding: rem(60) rem(40);
 
   &_title {
-    @include title2();
-
+    @include title2;
+    color: $primary;
   }
+
+  &_subtitle {
+    text-align: center;
+    font-size: rem(18);
+    color: $dark;
+    margin-bottom: rem(40);
+    font-weight: 400;
+  }
+
   &_form {
-    width: 700px;
-    max-width: 90%;
-    margin-inline: auto;
-    label {
-      @include form_label($dark);
+    width: 100%;
+    max-width: rem(700);
+    margin: 0 auto;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: rem(24);
     }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: rem(14);
+      color: $dark;
+      margin-bottom: rem(8);
+      text-transform: capitalize;
+      letter-spacing: 0.3px;
+    }
+
     .name-mail {
       display: grid;
-      grid-template-columns: repeat(2,49.5%);
-      gap: 1%;
-      @media(max-width: $sm) {
-        grid-template-columns: 100%;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(16);
+
+      @media(max-width: $md) {
+        grid-template-columns: 1fr;
       }
     }
-    input, textarea {
-      @include form_input();
+
+    .contact-me_form_item {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      input,
+      textarea {
+        padding: rem(12) rem(16);
+        border: rem(2) solid rgba($dark, 0.2);
+        border-radius: rem(8);
+        font-size: rem(14);
+        font-family: 'Roboto Slab', serif;
+        background-color: white;
+        transition: all 0.3s ease;
+        color: $dark;
+
+        &:focus {
+          outline: none;
+          border-color: $primary;
+          box-shadow: 0 0 0 3px rgba($primary, 0.1);
+          background-color: white;
+        }
+
+        &::placeholder {
+          color: rgba($dark, 0.5);
+        }
+
+        &.error {
+          border-color: #e53935;
+          background-color: rgba(229, 57, 53, 0.05);
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: rem(120);
+      }
+
+      .error-message {
+        font-size: rem(12);
+        color: #e53935;
+        margin-top: rem(4);
+        font-weight: 500;
+      }
+
+      .char-count {
+        font-size: rem(11);
+        color: rgba($dark, 0.6);
+        margin-top: rem(4);
+        text-align: right;
+      }
     }
-    // button {
-    //   width: 100%;
-    //   color: $light;
-    //   background-color: $success;
-    //   padding: 10px;
-    //   border: 2px solid $primary;
-    //   border-radius: 4px;
-    //   margin-top: 10px;
-    //   margin-bottom: 10px;
-    //   cursor: pointer;
-    //   font: {
-    //     size: 18px;
-    //     weight: 600;
-    //   }
-    //   @media(max-width: $sm) {
-    //     font-size: rem((12));
-    //   }
-    //   &:hover {
-    //     background-color: #328332;
-    //   }
-    // }
-    button {
-      margin-bottom: rem(10);
+
+    .submit-btn {
+      padding: rem(14) rem(32) !important;
+      background: linear-gradient(135deg, $primary, #7B1FA2) !important;
+      color: white !important;
+      font-weight: 700 !important;
+      border-radius: rem(8) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      font-size: rem(14) !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 rem(4) rem(12) rgba($primary, 0.3) !important;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 rem(6) rem(16) rgba($primary, 0.4) !important;
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(0);
+      }
+
+      &:disabled {
+        opacity: 0.8;
+      }
+
+      svg {
+        margin-right: rem(8);
+      }
+    }
+  }
+
+  @media(max-width: $md) {
+    padding: rem(40) rem(20);
+  }
+
+  @media(max-width: $sm) {
+    padding: rem(32) rem(16);
+
+    &_form {
+      .contact-me_form_item {
+        input,
+        textarea {
+          font-size: rem(16);
+        }
+      }
     }
   }
 }
+
 .msg {
-  display: none;
-  &_bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #000000c4;
+  position: fixed;
+  top: rem(20);
+  right: rem(20);
+  z-index: 2000;
+  max-width: rem(400);
+
+  @media(max-width: $sm) {
+    right: rem(12);
+    left: rem(12);
+    top: auto;
+    bottom: rem(20);
+    max-width: none;
   }
-  &_box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 500px;
-    max-width: 90%;
-    box-shadow: 0 0 .4rem black,0 0 .4rem black;
-    border-radius: 20px;
-    background-color: #ffffff;
-    padding: 20px 10px;
-    &_close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      color: #212121;
-      cursor: pointer;
-      font-size: 20px;
-      &:hover {
-        color: red;
-      }
-    }
-    &_success {
-      margin-top: 10px;
-      text-align: center;
-      font: {
-        size: 15px;
-        weight: 600;
-      }
-      color: #212121;
+
+  &_content {
+    display: flex;
+    align-items: center;
+    gap: rem(16);
+    padding: rem(16) rem(20);
+    border-radius: rem(8);
+    background-color: white;
+    box-shadow: 0 rem(8) rem(24) rgba(0, 0, 0, 0.15);
+    position: relative;
+
+    .msg_icon {
+      font-size: rem(24);
+      flex-shrink: 0;
     }
 
+    p {
+      margin: 0;
+      font-size: rem(14);
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .msg_close {
+      background: none;
+      border: none;
+      color: rgba($dark, 0.4);
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $dark;
+      }
+
+      svg {
+        font-size: rem(20);
+      }
+    }
   }
-  
+
+  &-success {
+    .msg_icon {
+      color: #4caf50;
+    }
+  }
+
+  &-error {
+    .msg_content {
+      background-color: #ffebee;
+    }
+
+    .msg_icon {
+      color: #e53935;
+    }
+
+    p {
+      color: #c62828;
+    }
+  }
 }
