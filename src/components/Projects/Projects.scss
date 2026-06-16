@@ -34,7 +34,6 @@
 
   .slider {
     width: 100%;
-    overflow: hidden;
     position: relative;
     padding: rem(32) rem(60);
     margin-top: rem(40);
@@ -42,75 +41,94 @@
     &_box {
       display: flex;
       gap: rem(24);
-      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-      width: max-content;
-    }
-
-    &_item {
-      flex-shrink: 0;
-      width: rem(460);
-      border-radius: rem(20);
-      overflow: hidden;
-      background: rgba(15, 23, 42, 0.45);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      text-decoration: none;
-      box-shadow: 0 rem(12) rem(40) rgba(0, 0, 0, 0.3);
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      display: flex;
-      flex-direction: column;
-
-      &:hover {
-        transform: translateY(-8px);
-        border-color: rgba($accent, 0.4);
-        box-shadow: 0 rem(20) rem(48) rgba($primary, 0.25);
-
-        .slider_box_item_img {
-          transform: scale(1.04);
-        }
-
-        .slider_box_item_caption {
-          color: $accent;
-          border-top-color: rgba($accent, 0.2);
-        }
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-block: rem(16);
+      width: 100%;
+      
+      &::-webkit-scrollbar {
+        display: none;
       }
+      -ms-overflow-style: none;
+      scrollbar-width: none;
 
-      &_img {
-        width: 100%;
-        height: rem(260);
-        object-fit: cover;
-        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-      }
-
-      &_caption {
-        padding: rem(20) rem(24);
-        background: rgba(10, 15, 30, 0.75);
-        color: rgba($light, 0.9);
-        font-family: $font-title;
-        font-size: rem(16);
-        font-weight: 700;
-        text-align: center;
-        flex-grow: 1;
+      &_item {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        width: rem(460);
+        border-radius: rem(20);
+        overflow: hidden;
+        background: rgba(15, 23, 42, 0.45);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        text-decoration: none;
+        box-shadow: 0 rem(12) rem(40) rgba(0, 0, 0, 0.3);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         display: flex;
-        align-items: center;
-        justify-content: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.3s ease;
-        letter-spacing: 0.5px;
-      }
+        flex-direction: column;
 
-      @media(max-width: $sm) {
-        width: rem(280);
+        &:hover {
+          transform: translateY(-8px);
+          border-color: rgba($accent, 0.4);
+          box-shadow: 0 rem(20) rem(48) rgba($primary, 0.25);
+
+          .slider_box_item_img {
+            transform: scale(1.04);
+          }
+
+          .slider_box_item_caption {
+            color: $accent;
+            border-top-color: rgba($accent, 0.2);
+          }
+        }
 
         &_img {
-          height: rem(160);
+          width: 100%;
+          height: rem(260);
+          object-fit: cover;
+          transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         &_caption {
-          padding: rem(14);
-          font-size: rem(14);
+          padding: rem(20) rem(24);
+          background: rgba(10, 15, 30, 0.75);
+          color: rgba($light, 0.9);
+          font-family: $font-title;
+          font-size: rem(16);
+          font-weight: 700;
+          text-align: center;
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          transition: all 0.3s ease;
+          letter-spacing: 0.5px;
+        }
+
+        @media(max-width: $md) {
+          width: calc(100vw - rem(160));
+
+          &_img {
+            height: rem(200);
+          }
+        }
+
+        @media(max-width: $sm) {
+          width: calc(100vw - rem(80));
+
+          &_img {
+            height: rem(160);
+          }
+
+          &_caption {
+            padding: rem(14);
+            font-size: rem(14);
+          }
         }
       }
     }
