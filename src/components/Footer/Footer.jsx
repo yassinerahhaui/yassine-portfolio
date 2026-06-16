@@ -1,8 +1,5 @@
 import React from 'react'
 import './Footer.scss'
-import { motion, useInView, useAnimation } from 'framer-motion'
-import SendIcon from '@mui/icons-material/Send';
-import Button from '@mui/material/Button';
 import { Facebook, Instagram, Twitter, GitHub, Email, WhatsApp } from '@mui/icons-material';
 
 const Footer = () => {
@@ -26,18 +23,18 @@ const Footer = () => {
         </ul>
       </div>
       <div className="footer_end">
-        <form action="" method="post">
-          <label htmlFor="newslettre">Newslettre:</label>
+        <form>
+          <label htmlFor="newslettre">Newsletter:</label>
           <input type="email" name="newslettre" id="newslettre" placeholder='Enter Your Email...' />
-          <Button variant="outlined" color='inherit' sx={{ width: '100%' }}><SendIcon /></Button>
+          <button type="submit"><Email /></button>
         </form>
       </div>
       <div className="footer_social-media">
         <ul>
-          <li><a href=""><Facebook /></a></li>
-          <li><a href=""><Instagram /></a></li>
-          <li><a href=""><Twitter /></a></li>
-          <li><a href="https://github.com/yassinerahhaui"><GitHub /></a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook /></a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram /></a></li>
+          <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter /></a></li>
+          <li><a href="https://github.com/yassinerahhaui" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GitHub /></a></li>
         </ul>
       </div>
     </div>

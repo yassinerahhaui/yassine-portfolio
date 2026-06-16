@@ -1,28 +1,42 @@
-@import '../../scss/variables';
+@use '../../scss/variables' as *;
 
 .nav {
   width: 100%;
-  height: 60px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(135deg, $dark 0%, $primary 100%);
-  color: white;
-  padding-inline: 20px;
-  box-shadow: 0 rem(2) rem(8) rgba(0, 0, 0, 0.15);
+  background: rgba($dark, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: $light;
+  padding-inline: 40px;
+  box-shadow: 0 rem(4) rem(30) rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 998;
+  transition: all 0.3s ease;
 
   &_start {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 
     .menu {
       color: $light !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-radius: 10px !important;
+      padding: 8px !important;
+      border: 1px solid rgba(255, 255, 255, 0.05) !important;
+      
       @media(min-width: $sm) {
         display: none !important;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: $accent !important;
       }
     }
   }
@@ -34,27 +48,29 @@
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 8px;
+    gap: 16px;
 
     li {
-      padding-inline: 8px;
+      padding-inline: 4px;
 
       a {
-        color: white;
+        color: rgba($light, 0.85);
         text-decoration: none;
         font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.3px;
+        font-weight: 550;
+        letter-spacing: 0.5px;
         position: relative;
-        transition: color 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
         &::after {
           content: '';
           display: block;
           position: absolute;
-          bottom: -4px;
-          left: 0;
-          right: 0;
+          bottom: 2px;
+          left: 12px;
+          right: 12px;
           height: 2px;
           background-color: $accent;
           transform: scaleX(0);
@@ -64,6 +80,7 @@
 
         &:hover {
           color: $accent;
+          background: rgba(255, 255, 255, 0.03);
 
           &::after {
             transform: scaleX(1);
@@ -72,19 +89,27 @@
       }
     }
   }
+
+  @media(max-width: $sm) {
+    padding-inline: 20px;
+    height: 60px;
+  }
 }
 
 .logo {
-  width: 100px;
-  transition: transform 0.3s ease;
+  height: rem(40);
+  width: auto;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 0 8px rgba($primary, 0.3));
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.08) rotate(-2deg);
+    filter: drop-shadow(0 0 12px rgba($accent, 0.5));
   }
 }
 
 .nav-bg {
-  background-color: rgba($dark, 0.65);
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 0;
   right: 0;
@@ -99,53 +124,74 @@
   left: 0;
   bottom: 0;
   width: 280px;
-  background: linear-gradient(135deg, $light 0%, rgba($primary, 0.08) 100%);
+  background: rgba($dark, 0.85);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
   z-index: 999;
   overflow-y: auto;
-  box-shadow: rem(2) 0 rem(8) rgba(0, 0, 0, 0.2);
+  box-shadow: rem(4) 0 rem(40) rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
 
   .navlist_header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 60px;
-    padding-right: 12px;
+    height: 70px;
+    padding-right: 20px;
 
     .close-btn {
-      color: $primary !important;
+      color: $light !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.05) !important;
+      border-radius: 10px !important;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: $accent !important;
+      }
     }
   }
 
   ul {
     list-style: none;
-    padding-top: 12px;
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
     a {
-      color: $dark;
+      color: rgba($light, 0.8);
       text-decoration: none;
       display: block;
-      font-size: rem(14);
+      font-size: rem(15);
       font-weight: 600;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
       position: relative;
-      transition: all 0.3s ease;
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
 
       &::before {
         content: '';
         position: absolute;
         left: 0;
-        top: 0;
-        bottom: 0;
-        width: 4px;
+        top: 25%;
+        bottom: 25%;
+        width: 3px;
         background-color: $accent;
         transform: scaleY(0);
         transform-origin: center;
         transition: transform 0.3s ease;
+        border-radius: 0 4px 4px 0;
       }
 
       &:hover {
         background-color: rgba($primary, 0.08);
-        padding-left: 16px;
+        border-color: rgba($primary, 0.1);
+        color: $accent;
+        padding-left: 12px;
 
         &::before {
           transform: scaleY(1);
@@ -153,13 +199,16 @@
       }
 
       li {
-        padding: rem(12) rem(20);
+        padding: rem(14) rem(20);
         margin: 0;
       }
     }
   }
 
   @media(max-width: $sm) {
-    width: 250px;
+    width: 260px;
+    .navlist_header {
+      height: 60px;
+    }
   }
 }

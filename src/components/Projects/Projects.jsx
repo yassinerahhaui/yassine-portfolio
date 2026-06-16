@@ -2,8 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import './Projects.scss'
 import { motion, useAnimation, useInView } from 'framer-motion'
 import { data } from '../../data/projects'
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import { KeyboardArrowLeft as KeyboardArrowLeftIcon, KeyboardArrowRight as KeyboardArrowRightIcon } from '@mui/icons-material'
 
 const animation = { 
   start: { opacity: 0 },
@@ -70,16 +69,15 @@ const Projects = () => {
           style={{ transform: `translateX(-${scrollPosition}px)` }}
         >
           {data.map(el => (
-            <a 
+            <motion.div 
               key={el.id} 
               className='slider_box_item' 
-              target='_blank' 
-              rel="noopener noreferrer"
-              href={el.link}
+              whileHover={{ y: -8, scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <img src={el.image} alt={el.title} className="slider_box_item_img" />
               <h4 className="slider_box_item_caption">{el.title}</h4>
-            </a>
+            </motion.div>
           ))}
         </div>
 

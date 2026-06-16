@@ -1,60 +1,94 @@
-@import '../../scss/variables';
+@use '../../scss/variables' as *;
 
 .projects {
-  background: linear-gradient(135deg, $light 0%, rgba($primary, 0.08) 100%);
-  padding: rem(60) rem(40);
+  background: radial-gradient(circle at 10% 80%, rgba($primary, 0.06) 0%, transparent 60%),
+              #030712;
+  padding: rem(80) rem(40);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: rem(400);
+    height: rem(400);
+    background: radial-gradient(circle, rgba($accent, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
 
   &_title {
     @include title2;
-    color: $primary;
-    margin-bottom: rem(40);
+    color: $light;
+    margin-bottom: rem(12);
   }
 
   .slider {
     width: 100%;
     overflow: hidden;
     position: relative;
-    padding: rem(20) rem(60);
+    padding: rem(32) rem(60);
+    margin-top: rem(40);
 
     &_box {
       display: flex;
-      gap: rem(20);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: rem(24);
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
       width: max-content;
     }
 
     &_item {
       flex-shrink: 0;
-      width: rem(500);
-      border-radius: rem(16);
+      width: rem(460);
+      border-radius: rem(20);
       overflow: hidden;
-      background-color: white;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       text-decoration: none;
-      box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      box-shadow: 0 rem(12) rem(40) rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       display: flex;
       flex-direction: column;
 
       &:hover {
         transform: translateY(-8px);
-        box-shadow: 0 rem(12) rem(24) rgba(0, 0, 0, 0.2);
+        border-color: rgba($accent, 0.4);
+        box-shadow: 0 rem(20) rem(48) rgba($primary, 0.25);
 
         .slider_box_item_img {
-          transform: scale(1.05);
+          transform: scale(1.04);
+        }
+
+        .slider_box_item_caption {
+          color: $accent;
+          border-top-color: rgba($accent, 0.2);
         }
       }
 
       &_img {
         width: 100%;
-        height: rem(280);
+        height: rem(260);
         object-fit: cover;
-        transition: transform 0.3s ease;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.02);
       }
 
       &_caption {
-        padding: rem(20);
-        background: linear-gradient(135deg, $primary, #0052cc);
-        color: $light;
+        padding: rem(20) rem(24);
+        background: rgba(10, 15, 30, 0.75);
+        color: rgba($light, 0.9);
+        font-family: $font-title;
         font-size: rem(16);
         font-weight: 700;
         text-align: center;
@@ -62,6 +96,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
       }
 
       @media(max-width: $sm) {
@@ -72,7 +109,7 @@
         }
 
         &_caption {
-          padding: rem(12);
+          padding: rem(14);
           font-size: rem(14);
         }
       }
@@ -83,22 +120,28 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
-      background: rgba($primary, 0.85);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: rem(48);
-      height: rem(48);
+      background: rgba(15, 23, 42, 0.6);
+      color: $light;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 rem(8) rem(24) rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: rem(14);
+      width: rem(52);
+      height: rem(52);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       padding: 0;
 
       &:hover {
-        background: $primary;
-        transform: translateY(-50%) scale(1.1);
+        background: rgba($primary, 0.2);
+        color: $accent;
+        border-color: rgba($accent, 0.4);
+        box-shadow: 0 rem(12) rem(32) rgba($primary, 0.3);
+        transform: translateY(-50%) scale(1.08);
       }
 
       &:active {
@@ -114,8 +157,8 @@
       }
 
       @media(max-width: $md) {
-        width: rem(40);
-        height: rem(40);
+        width: rem(44);
+        height: rem(44);
 
         &.left-btn {
           left: 0;
@@ -127,34 +170,25 @@
       }
 
       @media(max-width: $sm) {
-        width: rem(36);
-        height: rem(36);
+        width: rem(38);
+        height: rem(38);
       }
     }
   }
 
   @media(max-width: $md) {
-    padding: rem(40) rem(20);
+    padding: rem(60) rem(24);
 
     .slider {
-      padding: rem(16) rem(50);
+      padding: rem(16) rem(48);
     }
   }
 
   @media(max-width: $sm) {
-    padding: rem(32) rem(16);
+    padding: rem(48) rem(16);
 
     .slider {
-      padding: rem(12) rem(44);
+      padding: rem(12) rem(40);
     }
   }
-}
-
-@mixin title2 {
-  font-size: rem(36);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-align: center;
-  margin: rem(20) 0;
 }

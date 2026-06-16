@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import './Navigation.scss'
 import { IconButton } from '@mui/material'
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import CloseIcon from '@mui/icons-material/Close';
+import { MenuRounded as MenuRoundedIcon, Close as CloseIcon } from '@mui/icons-material';
 import { motion } from 'framer-motion'
 
 const Navigation = () => {
@@ -55,7 +54,12 @@ const Navigation = () => {
         animate={{ opacity: isMenuOpen ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         onClick={closeMenu}
-        style={{ pointerEvents: isMenuOpen ? 'auto' : 'none' }}
+        style={{ 
+          pointerEvents: isMenuOpen ? 'auto' : 'none',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          backgroundColor: 'rgba(0, 0, 0, 0.2)' 
+        }}
       />
 
       {/* Mobile Menu */}
@@ -76,14 +80,15 @@ const Navigation = () => {
         </div>
         <ul>
           {navLinks.map((link) => (
-            <a 
-              key={link.href}
-              href={link.href} 
-              onClick={closeMenu} 
-              aria-label={`${link.label} navigation link`}
-            >
-              <li>{link.label}</li>
-            </a>
+            <li key={link.href}>
+              <a 
+                href={link.href} 
+                onClick={closeMenu} 
+                aria-label={`${link.label} navigation link`}
+              >
+                {link.label}
+              </a>
+            </li>
           ))}
         </ul>
       </motion.div>

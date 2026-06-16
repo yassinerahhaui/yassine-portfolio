@@ -1,4 +1,6 @@
-@import './functions';
+@use './functions' as *;
+@forward './functions';
+
 // grid  	540px 	720px 	960px 	1140px 	1320px
 $sm: rem(540);
 $md: rem(720);
@@ -6,15 +8,18 @@ $lg: rem(960);
 $xl: rem(1140);
 $xxl: rem(1320);
 
-// colors
-$accent: #00D4AA;
-$dark: #1A1A2E;
-$light: #F8F9FA;
-$primary: #0066FF;
-$success: #16A34A;
-$bg-1: #F5F6FA;
-$warning: #E9EEF8;
+// colors (Modern Premium Dark Tech theme)
+$primary: #6366F1;      // Neon Indigo
+$accent: #00F5D4;       // Radiant Teal/Cyan
+$dark: #0A0F1D;         // Deep space dark
+$light: #F8FAFC;        // Crisp modern white text
+$success: #10B981;      // Emerald green
+$bg-1: #030712;         // Obsidian black background
+$warning: #1E293B;      // Dark slate accent
+$text-muted: #94A3B8;   // Modern slate gray for secondary text
 
 // fonts
-$Poppins: 'Poppins', sans-serif;
+$Poppins: 'Plus Jakarta Sans', sans-serif;
+$font-title: 'Outfit', sans-serif;
+$font-body: 'Plus Jakarta Sans', sans-serif;
 

@@ -1,39 +1,68 @@
-@import '../../scss/variables';
+@use '../../scss/variables' as *;
 
 .about {
-  background: linear-gradient(135deg, $light 0%, rgba($primary, 0.08) 100%);
-  padding: rem(60) rem(40);
+  background: radial-gradient(circle at 90% 90%, rgba($primary, 0.04) 0%, transparent 60%),
+              #030712;
+  padding: rem(80) rem(40);
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 
   &_title {
     @include title2;
-    color: $primary;
-    margin-bottom: rem(40);
+    color: $light;
+    margin-bottom: rem(12);
   }
 
   &_paragraph {
-    font-size: rem(16);
+    font-size: rem(17);
     font-weight: 400;
-    color: $dark;
-    max-width: rem(700);
-    margin: 0 auto;
-    padding: rem(32) rem(24);
+    color: rgba($light, 0.85);
+    max-width: rem(780);
+    margin: rem(36) auto 0 auto;
+    padding: rem(40) rem(48);
     text-align: center;
-    line-height: 1.8;
-    letter-spacing: 0.3px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: rem(12);
-    box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.08);
+    line-height: 1.85;
+    letter-spacing: 0.4px;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: rem(24);
+    box-shadow: 0 rem(16) rem(48) rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    // Glowing border top accent
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, $accent, $primary, transparent);
+      opacity: 0.8;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: rgba($primary, 0.3);
+      box-shadow: 0 rem(24) rem(56) rgba($primary, 0.15);
+      background: rgba(15, 23, 42, 0.55);
+    }
 
     @media(max-width: $md) {
-      font-size: rem(15);
-      padding: rem(24) rem(16);
+      font-size: rem(16);
+      padding: rem(32) rem(24);
+      margin-top: rem(24);
     }
 
     @media(max-width: $sm) {
-      font-size: rem(14);
+      font-size: rem(15);
       text-align: left;
-      padding: rem(16);
-      line-height: 1.6;
+      padding: rem(24) rem(20);
+      line-height: 1.7;
     }
   }
 }

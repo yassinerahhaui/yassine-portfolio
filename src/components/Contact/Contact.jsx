@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Contact.scss'
 import { motion, useInView, useAnimation } from 'framer-motion'
-import SendIcon from '@mui/icons-material/Send';
-import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
-import CloseIcon from '@mui/icons-material/Close';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Button, CircularProgress } from '@mui/material';
+import { Send as SendIcon, Close as CloseIcon, CheckCircle as CheckCircleIcon } from '@mui/icons-material';
 
 const animation = {
   start: { x: '-100%', opacity: 0 },

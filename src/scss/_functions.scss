@@ -6,10 +6,16 @@
 @mixin title2() {
   text-align: center;
   padding: rem(20) 0;
-  font-size: rem(36);
+  font-size: rem(38);
   font-weight: 800;
+  font-family: 'Outfit', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, #ffffff 40%, rgba(#6366F1, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: rem(20);
 }
 
 @mixin form_label($color) {
@@ -34,19 +40,19 @@
   border: rem(2) solid #d5dce5;
   font-size: rem(14);
   font-weight: 500;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   transition: all 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: #0066ff;
-    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.12);
+    border-color: #6366F1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
   }
 
   &::placeholder {
     font-weight: 400;
     font-size: rem(14);
-    color: rgba(26, 26, 46, 0.5);
+    color: rgba(255, 255, 255, 0.4);
 
     @media(max-width: $sm) {
       font-size: rem(12);
@@ -57,3 +63,4 @@
     font-size: rem(14);
   }
 }
+

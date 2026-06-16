@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import './Skills.scss'
 import { data } from '../../data/skills'
 import { motion, useAnimation } from 'framer-motion'
